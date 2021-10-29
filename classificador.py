@@ -11,7 +11,7 @@ class Bayes_Classifier:
 
     def carrega_tabela(self, tabela):
         self.csv = pd.read_csv(tabela, sep=',')
-        print(self.csv)
+        # print(self.csv)
     
     def load_csv(filename):
         """Load CSV data from a file and convert the attributes to numbers.
@@ -25,8 +25,12 @@ class Bayes_Classifier:
             dataset[i] = [float(x) for x in dataset[i]]
         f.close()
         return dataset
+    
+    def calculate_probability(self, A, B):
+        A = (A | B)
 
 a = Bayes_Classifier("F","a - Ate 25 anos ","Fundamental","b",0)
 a.carrega_tabela("naive-bayes-classificador-2.csv")
+print(a.calculate_probability({0,1,2,3}, {3, 4, 5, 65}))
 
-print(a.csv['genero'])
+# print(a.csv['genero'])
